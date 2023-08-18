@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,7 +47,7 @@
   box-shadow: 1px 1px 3px 1px rgba(118, 118, 119, 0.281);
   
 
- border-radius: 5px;
+ border-radius: 8px;
  margin-top: 20px;
  /* margin-right: 15px; */
  padding-bottom: 10px;
@@ -149,3 +151,19 @@
  padding: 20px;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbarO {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.sideW{
+  width: 30%;
+}
+
+.centerW{
+  width: 40%;
+}
