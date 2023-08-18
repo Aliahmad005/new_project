@@ -48,7 +48,7 @@ const Card = (props) => {
           </div>
           <div >
 
-            <Carousel data-bs-theme="dark" controls={false}  interval={null}>
+            <Carousel data-bs-theme="dark" controls={false}  >
               {props.data.images.map(function (data) {
                 return <Carousel.Item>
                   <img
