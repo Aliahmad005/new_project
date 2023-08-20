@@ -22,6 +22,8 @@ const Home = () => {
     const [grid, setGrid] = useState(false)
     // for sticky useState
     const [chatWidth, setChatWidth] = useState(undefined);
+    const [tabWidth, setTabWidth] = useState(undefined);
+    const [tabTop, setTabTop] = useState(undefined);
     const [sidebarTop, setSidebarTop] = useState(undefined);
     const [sidebare, setSidebare] = useState('');
 
@@ -69,18 +71,29 @@ const Home = () => {
 
     useEffect(() => {
         const chatEl = document.querySelector('.getwidthe').getBoundingClientRect();
-
+        // const chatT = document.querySelector('.getTab').getBoundingClientRect();
+        // setTabTop(chatT.top);
+        // setTabWidth(chatT.width);
         setChatWidth(chatEl.width);
 
 
     }, [sidebare]);
 
 
+    useEffect(() => {
+       
+        const chatT = document.querySelector('.getTab').getBoundingClientRect();
+        setTabTop(chatT.top);
+        setTabWidth(chatT.width);
+      
+
+
+    }, []);
 
 
 
     useEffect(() => {
-        if (!sidebarTop) return;
+        if (!sidebarTop ) return;
 
         window.addEventListener('scroll', isSticky);
 
@@ -89,7 +102,21 @@ const Home = () => {
 
 
         };
-    }, [sidebarTop]);
+    }, [sidebarTop ]);
+
+// tab sticky
+
+    useEffect(() => {
+        if (!tabTop ) return;
+
+        window.addEventListener('scroll', Sticky);
+
+        return () => {
+            window.removeEventListener('scroll', Sticky);
+
+
+        };
+    }, [tabTop ]);
 
 
     const isSticky = (e) => {
@@ -102,20 +129,28 @@ const Home = () => {
         }
     };
 
+    //tabTop
+
+    const Sticky = (e) => {
+        const chatT = document.querySelector('.getTab');
+        const scrollTop = window.scrollY;
+        if (scrollTop >= sidebarTop - 10) {
+            chatT.classList.add('sticky');
+        } else {
+            chatT.classList.remove('sticky');
+        }
+    };
+
+
 
 
     return (
-        <div className=''>
+        <div className='pt-3'>
 
 
 
-
-
-            <div className='md:flex lg:flex sm:flex '>
-
-
-                {/*Tab for mobail view*/}
-                <div className='lg:hidden md:hidden sm:hidden block mt-3 px-2'>
+  {/*Tab for mobail view*/}
+  <div className='lg:hidden md:hidden sm:hidden w-full bg-gray-100 block  px-2 getTab'>
                     <Tabs
                         defaultActiveKey="profile"
                         id="fill-tab-example"
@@ -137,6 +172,11 @@ const Home = () => {
 
 
                 </div>
+
+            <div className='md:flex lg:flex sm:flex '>
+
+
+              
 
 
 
@@ -193,33 +233,60 @@ const Home = () => {
                                     <div className='mt-[20px]'>
                                         <AiFillCaretUp className='lg:ml-3 lg:mr-3 text-xl mt-1 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  mb-[20px]' />
                                     </div>
-                                    <h5 className='productPageLCatHeading sm:hidden md:hidden lg:block'>Sort by</h5>
+                                    <h5 className='productPageLCatHeading sm:hidden md:hidden lg:block'>Sub filter</h5>
 
                                 </div>
 
                                 <div className='flex'>
                                     <div>
-                                        <FaClock className='lg:ml-3 lg:mr-3 mt-1 text-xl md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' />
+                                        {/* <FaClock className='lg:ml-3 lg:mr-3 mt-1 text-xl md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' /> */}
+                                        <img src={require('../img/avatar.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 mt-1 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
 
                                     </div>
-                                    <p className='productPageLCatMenu sm:hidden md:hidden lg:block' >Time</p>
+                                    <p className='productPageLCatMenu sm:hidden md:hidden lg:block' >Health and Medical</p>
 
                                 </div>
 
                                 <div className='flex'>
                                     <div>
-                                        <FiTrendingUp className='lg:ml-3 lg:mr-3 text-xl mt-1 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' />
+                                        {/* <FiTrendingUp className='lg:ml-3 lg:mr-3 text-xl mt-1 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' /> */}
+                                        <img src={require('../img/avatar1.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
 
                                     </div>
-                                    <p className='productPageLCatMenu sm:hidden md:hidden lg:block' >Trending</p>
+                                    <p className='productPageLCatMenu sm:hidden md:hidden lg:block' >Politics and Government</p>
 
                                 </div>
                                 <div className='flex'>
                                     <div>
-                                        <BiSortAZ className='lg:ml-3 lg:mr-3 mt-1 text-xl md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' />
+                                        {/* <BiSortAZ className='lg:ml-3 lg:mr-3 mt-1 text-xl md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' /> */}
+                                        <img src={require('../img/avatar3.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
 
                                     </div>
-                                    <p className='productPageLCatMenu sm:hidden text-xl md:hidden lg:block' >Alphabeticaly</p>
+                                    <p className='productPageLCatMenu sm:hidden text-xl md:hidden lg:block' >Fashion and Style</p>
+                                </div>
+                                <div className='flex'>
+                                    <div>
+                                        {/* <BiSortAZ className='lg:ml-3 lg:mr-3 mt-1 text-xl md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' /> */}
+                                        <img src={require('../img/avatar3.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
+
+                                    </div>
+                                    <p className='productPageLCatMenu sm:hidden text-xl md:hidden lg:block' >Food and Cooking</p>
+                                </div>
+                                <div className='flex'>
+                                    <div>
+                                        {/* <BiSortAZ className='lg:ml-3 lg:mr-3 mt-1 text-xl md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' /> */}
+                                        <img src={require('../img/avatar4.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
+
+                                    </div>
+                                    <p className='productPageLCatMenu sm:hidden text-xl md:hidden lg:block' >Science and Technology</p>
+                                </div>
+                                <div className='flex'>
+                                    <div>
+                                        {/* <BiSortAZ className='lg:ml-3 lg:mr-3 mt-1 text-xl md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' /> */}
+                                        <img src={require('../img/avatar5.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
+
+                                    </div>
+                                    <p className='productPageLCatMenu sm:hidden text-xl md:hidden lg:block' >Climate and Environment</p>
                                 </div>
                                 <div className='flex'>
                                     <div className='mt-[20px]'>
