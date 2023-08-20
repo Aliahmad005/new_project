@@ -26,8 +26,8 @@ const Card = (props) => {
 
 
 
-      <div class=" p-4">
-        <div class="bg-white border rounded-lg max-w-md">
+      <div class=" pb-4 pt-2 px-2">
+        <div class="bg-white border rounded-lg max-w-[500px]">
           <div class="flex items-center px-4 py-3">
             <img class="h-8 w-8 rounded-full" src={props.data.image} />
             <div class="ml-3 ">
@@ -64,33 +64,6 @@ const Card = (props) => {
             </Carousel>
 
 
-
-            {/* <div ref={sliderRef} className="keen-slider">
-              {
-                props.data.images.map(function (data) {
-
-
-                  return <div className="keen-slider__slide ">
-
-                    <img
-                      className='w-full'
-                      src={data}
-                      alt="First slide"
-                    />
-                  </div>
-
-                })
-
-              }
-              <div className={`keen-slider__slide `}>
-                <img
-                  className="d-block w-100"
-                  src={props.data.images[0]}
-                  alt="First slide"
-                />
-              </div>
-
-            </div> */}
 
 
 

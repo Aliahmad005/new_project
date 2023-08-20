@@ -15,19 +15,103 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
 
+
 const Home = () => {
-    console.log('data', data)
+
     const limitedData = data.slice(0, 15);
     const [grid, setGrid] = useState(false)
+    // for sticky useState
+    const [chatWidth, setChatWidth] = useState(undefined);
+    const [sidebarTop, setSidebarTop] = useState(undefined);
+    const [sidebare, setSidebare] = useState('');
+
+
+
+
+    //sticky
+
+
+
+
+
+    const windowWidth = useRef(window.innerWidth)
+
+
+
+
+
+
+
+    React.useEffect(() => {
+        function handleResize() {
+            console.log('resized to: ', window.innerWidth, 'x', window.innerHeight)
+            setSidebare(window.innerWidth)
+
+        }
+
+        window.addEventListener('resize', handleResize)
+    })
+
+
+
+
+
+    useEffect(() => {
+      
+        if (chatWidth > 70) {
+            setSidebarTop("617");
+        } else {
+            setSidebarTop("263");
+
+        }
+    }, [chatWidth]);
+
+
+    useEffect(() => {
+        const chatEl = document.querySelector('.getwidthe').getBoundingClientRect();
+
+        setChatWidth(chatEl.width);
+
+
+    }, [sidebare]);
+
+
+
+
+
+    useEffect(() => {
+        if (!sidebarTop) return;
+
+        window.addEventListener('scroll', isSticky);
+
+        return () => {
+            window.removeEventListener('scroll', isSticky);
+
+
+        };
+    }, [sidebarTop]);
+
+
+    const isSticky = (e) => {
+        const chatEl = document.querySelector('.sidebar');
+        const scrollTop = window.scrollY;
+        if (scrollTop >= sidebarTop - 10) {
+            chatEl.classList.add('is-sticky');
+        } else {
+            chatEl.classList.remove('is-sticky');
+        }
+    };
+
+
 
     return (
-        <div>
+        <div className=''>
 
 
 
 
 
-            <div className='md:flex lg:flex sm:flex'>
+            <div className='md:flex lg:flex sm:flex '>
 
 
                 {/*Tab for mobail view*/}
@@ -39,13 +123,13 @@ const Home = () => {
                         fill
                     >
 
-                        <Tab eventKey="home" title={<div><div className=' flex justify-center'><img src={require('../img/general-icon.png')} className='w-[50px] h-[50px]' alt="" /></div><p>Genral</p> </div>}>
+                        <Tab eventKey="home" title={<div><div className=' flex justify-center'><img src={require('../img/general-icon.png')} className='w-[30px] h-[30px]' alt="" /></div><p className='text-black'>Genral</p> </div>}>
 
                         </Tab>
-                        <Tab eventKey="profile" title={<div><div className=' flex justify-center'><img src={require('../img/sport-icon.png')} className='w-[50px] h-[50px]' alt="" /></div><p>Sports</p> </div>}>
+                        <Tab eventKey="profile" title={<div><div className=' flex justify-center'><img src={require('../img/sport-icon.png')} className='w-[30px] h-[30px]' alt="" /></div><p className='text-black'>Sports</p> </div>}>
 
                         </Tab>
-                        <Tab eventKey="longer-tab" title={<div><div className=' flex justify-center'><img src={require('../img/lifestyle-icon.png')} className='w-[50px] h-[50px]' alt="" /></div><p>Life style</p> </div>}>
+                        <Tab eventKey="longer-tab" title={<div><div className=' flex justify-center'><img src={require('../img/lifestyle-icon.png')} className='w-[30px] h-[30px]' alt="" /></div><p className='text-black'>Life style</p> </div>}>
 
                         </Tab>
 
@@ -62,16 +146,16 @@ const Home = () => {
 
 
 
-                    <div className='ml-5 mr-10 font-robo '>
+                    <div className='ml-5 mr-5 font-robo '>
                         <div className='sidDash'>
-                 {/*left side profile block*/}
+                            {/*left side profile block*/}
                             <div className='productPageLCatMain lg:flex lg:justify-center md:w-fit sm:w-fit lg:w-full  md:hidden sm:hidden hidden'>
                                 <Profile />
                             </div>
 
 
-                          
-                            <div className='productPageLCatMain md:w-fit sm:w-fit lg:w-full'>
+
+                            <div className='productPageLCatMain md:w-fit sm:w-fit lg:w-full getwidthe '>
                                 <div className='flex'>
                                     <div className='mt-[20px] mb-[20px]'>
                                         <FaNewspaper className='lg:ml-3 text-xl lg:mr-3 mt-1 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' />
@@ -99,11 +183,12 @@ const Home = () => {
                                         {/* <IoMdFilm className='lg:ml-3 lg:mr-3 text-xl  md:ml-5 md:mr-5 sm:ml-5 sm:mr-5 mt-1 text-gray-500 mb-[20px]' /> */}
                                         <img src={require('../img/lifestyle-icon.png')} className='w-[23px] h-[23px] lg:ml-3 lg:mr-3 lg:mt-1 md:mt-3 sm:mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
                                     </div>
-                                    <p className='productPageLCatMenu sm:hidden md:hidden lg:block' >Life style</p>
+                                    <p className='productPageLCatMenu sm:hidden md:hidden lg:block ' >Life style</p>
                                 </div>
                             </div>
 
-                            <div className='productPageLCatMain md:w-fit sm:w-fit lg:w-full'>
+
+                            <div className={`productPageLCatMain  sidebar `} style={{ width: chatWidth }} >
                                 <div className='flex'>
                                     <div className='mt-[20px]'>
                                         <AiFillCaretUp className='lg:ml-3 lg:mr-3 text-xl mt-1 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  mb-[20px]' />
@@ -164,13 +249,13 @@ const Home = () => {
 
                     </div>
 
-
+             
 
 
                 </div>
 
                 {/*center*/}
-                <div className='lg:w-2/5 md:w-9/12 sm:w-9/12 w-full  mt-[20px] '>
+                <div className='lg:w-2/5 md:w-9/12 sm:w-9/12 w-full  mt-[5px] lg-mb-0 md:mb-0 sm:mb-0 mb-5'>
                     <div className='flex justify-end  '>
                         <div className='p-1 cursor-pointer' onClick={() => setGrid(false)}>
                             {grid === true ?
