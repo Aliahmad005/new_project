@@ -88,7 +88,7 @@ const Home = () => {
       
 
 
-    }, []);
+    }, [sidebare]);
 
 
 
@@ -250,7 +250,7 @@ const Home = () => {
                                 <div className='flex'>
                                     <div>
                                         {/* <FiTrendingUp className='lg:ml-3 lg:mr-3 text-xl mt-1 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' /> */}
-                                        <img src={require('../img/avatar1.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
+                                        <img src={require('../img/avatar1.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 md:mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
 
                                     </div>
                                     <p className='productPageLCatMenu sm:hidden md:hidden lg:block' >Politics and Government</p>
@@ -259,7 +259,7 @@ const Home = () => {
                                 <div className='flex'>
                                     <div>
                                         {/* <BiSortAZ className='lg:ml-3 lg:mr-3 mt-1 text-xl md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' /> */}
-                                        <img src={require('../img/avatar3.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
+                                        <img src={require('../img/avatar3.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 md:mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
 
                                     </div>
                                     <p className='productPageLCatMenu sm:hidden text-xl md:hidden lg:block' >Fashion and Style</p>
@@ -267,7 +267,7 @@ const Home = () => {
                                 <div className='flex'>
                                     <div>
                                         {/* <BiSortAZ className='lg:ml-3 lg:mr-3 mt-1 text-xl md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' /> */}
-                                        <img src={require('../img/avatar3.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
+                                        <img src={require('../img/avatar3.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 md:mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
 
                                     </div>
                                     <p className='productPageLCatMenu sm:hidden text-xl md:hidden lg:block' >Food and Cooking</p>
@@ -275,7 +275,7 @@ const Home = () => {
                                 <div className='flex'>
                                     <div>
                                         {/* <BiSortAZ className='lg:ml-3 lg:mr-3 mt-1 text-xl md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' /> */}
-                                        <img src={require('../img/avatar4.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
+                                        <img src={require('../img/avatar4.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 md:mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
 
                                     </div>
                                     <p className='productPageLCatMenu sm:hidden text-xl md:hidden lg:block' >Science and Technology</p>
@@ -283,7 +283,7 @@ const Home = () => {
                                 <div className='flex'>
                                     <div>
                                         {/* <BiSortAZ className='lg:ml-3 lg:mr-3 mt-1 text-xl md:ml-5 md:mr-5 sm:ml-5 sm:mr-5  text-gray-500 mb-[20px]' /> */}
-                                        <img src={require('../img/avatar5.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
+                                        <img src={require('../img/avatar5.png')} className='w-[25px] h-[25px] lg:ml-3 lg:mr-3 md:mt-3 md:ml-5 md:mr-5 sm:ml-5 sm:mr-5' alt="" />
 
                                     </div>
                                     <p className='productPageLCatMenu sm:hidden text-xl md:hidden lg:block' >Climate and Environment</p>
